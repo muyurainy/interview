@@ -9,6 +9,6 @@ def oper(w1, w2):
             dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + flag)
     return dp[-1][-1]
 
-w1 = raw_input()
-w2 = raw_input()
+w1 = input()
+w2 = input()
 print (oper(w1, w2))

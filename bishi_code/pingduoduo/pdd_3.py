@@ -1,8 +1,8 @@
-s_list = raw_input()
+s_list = input()
 #print s_list
 s_list = s_list.replace('{', '').replace('}', '')
 word = map(int, s_list.split(', '))
-d = int(raw_input())
+d = int(input())
 #word = [31, 18, 19, 1, 25]
 length = len(word)
 word = sorted(word)
@@ -17,4 +17,4 @@ for i in range(length):
             j +=1
         else:
             break
-print '%.6f' % (1.0 * num/all_num)
+print ('%.6f' % (1.0 * num/all_num))
