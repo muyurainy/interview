@@ -5,31 +5,34 @@ def solution():
     以选择贿赂或直接过去，求经过一系列怪兽所花费的最少的金钱数。此题经分析为动态规划，
     要求的最优解为最少钱数，而状态为（i，j），表示当前经过第i个怪兽时战斗力为j，
     money(i,j)->money(i+1,j+dread[i])+price[i]或money(i+1,j)，答案是money(n,j)中最小值。
-    输入:
-    4
-    1100
+    输入:（第二行武力值，第三行收买价值）
+    3
+    8 5 9
+    1 1 2
 
     Notes
     -----
-    直接从左到右循环去判断
+    动态规划
     '''
-    _, string = int(input()), input()
-    old_length = 0
-    new_str = ""
-    while old_length != len(string) and len(string) >= 2:
-        index = 0
-        while index < len(string):
-            if index == len(string) - 1:
-                new_str += string[index]
-                break
-            if string[index] == string[index+1]:
-                new_str += string[index]
-                index += 1
+    n = int(input())
+    dread = []
+    price = []
+    dread = list(map(int, input().split()))
+    price = list(map(int, input().split()))
+    mon = [{} for i in range(n)]
+    mon[0][dread[0]] = price[0]
+    for i in range(1, n):
+        k = 4e9
+        for j in mon[i-1]:
+            if j < dread[i]:
+                t = mon[i][j + dread[i]] = mon[i-1][j] + price[i]
+                if k>t:
+                    k = t
             else:
-                index += 2
-        old_length = len(string)
-        string = new_str
-        new_str = ""
-    print (len(string))
+                t = mon[i][j] = mon[i-1][j]
+                mon[i][j + dread[i]] = mon[i-1][j] + price[i]
+                if k>t:
+                    k = t
+    print (k)
 
 solution()
