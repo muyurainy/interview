@@ -9,9 +9,7 @@ for _ in range(T):
     num2 = ''
     tmp = 0
     i = 0
-    while(True):
-        if i >= len(num):
-            break
+    for i in range(0, len(num), 3):
         tmp = (int(num[i])) * 100 + (int(num[i+1])) * 10 + (int(num[i+2]))
         tmp_str = ['0' for _ in range(10)]
         for j in range(10):
@@ -20,9 +18,7 @@ for _ in range(T):
             if tmp&1:
                 tmp_str[9-j] = '1'
             tmp >>= 1
-        for s in tmp_str:
-            num2 += s
-        i += 3
+        num2 += ''.join(tmp_str)
     num3 = ''
     first = True
     for s in num2:
@@ -34,13 +30,10 @@ for _ in range(T):
     if len(num3) % 5:
         num3 = '0' * (5 - len(num3) % 5) + num3
     i = 0
-    while(True):
-        if i >= len(num3):
-            break
+    for i in range(0, len(num3), 5):
         tmp = (int(num3[i])) * 16 + (int(num3[i+1])) * 8 + (int(num3[i+2])) * 4  + (int(num3[i+3])) * 2 + (int(num3[i+4]))
         if tmp <= 9:
-            print(str(tmp), end='')
+            print(chr(ord('0') + tmp), end='')
         else:
-            print(chr(ord('A') + tmp - 10) , end = '')
-        i += 5
+            print(chr(ord('A') + tmp - 10) , end ='')
     print('')
