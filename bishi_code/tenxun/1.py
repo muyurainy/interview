@@ -1,9 +1,12 @@
-n,k = map(int, input().split(' '))
-num = 0
-for _ in range(k):
-    if n == 1:
+n, k = map(int, input().split(' '))
+base = 1
+index = 0
+while(True):
+    if base > k:
         break
-    n = int(n/2)
-    k -= 1
-    num += 1
-print (num + k)
+    base = base * 2 + 1
+    index += 1
+if n % int(pow(2, index)) == 0:
+    print (n // int(pow(2, index)) + index)
+else:
+    print ((n // int(pow(2, index))) + 1 + index)
