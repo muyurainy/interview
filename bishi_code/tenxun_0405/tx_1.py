@@ -28,9 +28,9 @@ def solution():
         if sum_m >= n:
             print (num)
             break
-        for i in range(m):
-            if sum_m + 1 >= mon[m-1-i]:
-                sum_m += mon[m-1-i]
+        for i in range(m-1, -1, -1):
+            if sum_m + 1 >= mon[i]:
+                sum_m += mon[i]
                 num += 1
                 break
     return

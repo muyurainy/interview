@@ -17,8 +17,7 @@ for i in range(len(a)):
         break
     if a[i] > 0:
         print(a[i] - tmp)
-        tmp += a[i]
+        tmp = a[i]
         index += 1
-    if min(a) == 0:
-        print (0)
-        break
+for i in range(k-index):
+    print ('0')
