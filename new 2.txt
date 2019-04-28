@@ -1,0 +1,5 @@
+select province,rank() over (order by uv desc) as ranking,city,uv from
+(
+    select province,city,count(*) as uv from visit where dt='2019.3.1' group by city
+) as subtable
+group by province order by uv desc limit 2
